@@ -58,3 +58,32 @@ const valorTotalEstoque = produtos.reduce((acumulador, produto) => {
   return acumulador + (produto.preco * produto.estoque);
 }, 0);
 console.log(valorTotalEstoque);
+
+const precosOriginais = [100, 200, 300];
+const novosPrecos = precosOriginais.map((preco) => {
+    return preco * (preco * 0.9);
+});
+
+const nomesProdutos = produtos.map((produto) => {
+    return produto.nome;
+});
+console.log(nomesProdutos);
+
+const produtosOrdenados = produtos.slice();
+produtosOrdenados.sort((um, dois) => um.preco - dois.preco);
+console.log(produtosOrdenados);
+
+const inventario = [
+  { nome: "Teclado", estoque: 15 },
+  { nome: "Mouse", estoque: 2 },
+  { nome: "Headset", estoque: 10 }
+];
+
+const EstoqueCritico = inventario.some(produto => produto.estoque < 5);
+console.log("Existe pelo menos um produto com estoque crítico?");
+console.log(EstoqueCritico);
+if (EstoqueCritico) {
+  const produtoCritico = inventario.find(produto => produto.estoque < 5);
+  console.log("Primeiro produto em situação crítica encontrado:");
+  console.log(produtoCritico); 
+};
